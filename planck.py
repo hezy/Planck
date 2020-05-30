@@ -114,7 +114,7 @@ for t in T:
 
 # fitting Wien's curve with a + b/T
 axs[1].plot(T, Lmax, "bo")
-Tfit = np.arange(0, 6000, 100)  # temperature (K)
+Tfit = np.arange(100, 6000, 100)  # temperature (K)
 popt, pcov = curve_fit(wien, T, Lmax)
 print('a,b = ')
 print(popt)
