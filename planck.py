@@ -90,7 +90,14 @@ xfit = np.arange(1, 10000, 1)  # wavelength (nm)
 T = np.arange(1500, 5500, 500)  # temperature (K)
 Lmax = np.array([])
 
+R0 = 1.12
+Rw = 0.32
+alpha = 4.5e-3
+
 for t in T:
+    # R
+    R = R0 * (1 + t/293) + Rw
+
     # creating Planck's curve for temperature = t (with some random noise)
     y = (planck(x, t))  # * (1 + np.random.normal(0, 0.1, None))
     y = noise(y, 0, 0.02)
@@ -102,7 +109,8 @@ for t in T:
     yfit = planck(xfit, *popt)
     axs[0].plot(xfit, yfit, "-")
 
-    write_file(str(t) + 'K.csv', 'T = ' + str(t) + 'K', x, y)
+    #write_file(str(t) + 'K.csv', 'T = ' + str(t) + 'K', x, y)
+    write_file(str(R) + 'Ohm.csv', 'T = ' + str(R) + 'Ohm', x, y)
 
     '''
     finding the wavelength of maximal radiance for Planck's curve and
