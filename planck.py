@@ -99,7 +99,7 @@ for t in T:
     R = R0 * (1 + t/293) + Rw
 
     # creating Planck's curve for temperature = t (with some random noise)
-    y = (planck(x, t))  # * (1 + np.random.normal(0, 0.1, None))
+    y = (planck(x, t)) * (1 + np.random.normal(0, 0.1, None))
     y = noise(y, 0, 0.02)
     axs[0].plot(x, y, "o")
 
